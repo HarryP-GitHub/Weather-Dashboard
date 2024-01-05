@@ -6,8 +6,9 @@ var forecastEl = document.querySelector('#forecast');
 
 // function to get city coordinates when city is searched
 // Using Geocoding API
+//Always need to check it is https
 function cityCoordinates(city) {
-    var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=' + apiKey;
+    var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=' + apiKey;
 
     fetch(geoUrl)
         .then(function(response) {
@@ -67,7 +68,7 @@ function formatDate(weatherDateTime) {
 function currentWeather(city, currentWeatherData) {
     var date = formatDate(currentWeatherData.dt_txt);
     currentWeatherEl.innerHTML = '<h3>' + city + ' (' + date + ')</h3>' +
-      '<img src="http://openweathermap.org/img/wn/' + currentWeatherData.weather[0].icon + '.png" alt="Weather Image">' +
+      '<img src="https://openweathermap.org/img/wn/' + currentWeatherData.weather[0].icon + '.png" alt="Weather Image">' +
       '<p>Temperature: ' + currentWeatherData.main.temp + ' °C</p>' +
       '<p>Humidity: ' + currentWeatherData.main.humidity + '%</p>' +
       '<p>Wind Speed: ' + (currentWeatherData.wind.speed * 3.6).toFixed(2) + ' km/h</p>';
@@ -87,7 +88,7 @@ function forecastWeather(city, forecastData) {
         var forecastDayEl = document.createElement('div');
         forecastDayEl.className = 'forecast-day';
         forecastDayEl.innerHTML = '<h4>' + forecastDate + '</h4>' +
-          '<img src="http://openweathermap.org/img/wn/' + day.weather[0].icon + '.png" alt="Weather Image">' +
+          '<img src="https://openweathermap.org/img/wn/' + day.weather[0].icon + '.png" alt="Weather Image">' +
           '<p>Temp: ' + day.main.temp + ' °C</p>' +
           '<p>Humidity: ' + day.main.humidity + '%</p>' +
           '<p>Wind: ' + (day.wind.speed * 3.6).toFixed(2) + ' km/h</p>';
