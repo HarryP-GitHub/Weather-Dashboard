@@ -1,0 +1,147 @@
+:root {
+    --blue: #479cfd;
+    --grey: #c0c0c0;
+    --offwhite: #e5e5e5;
+    --darkoffwhite: #bfbfbf; 
+    --darkblue: #2388fa;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--grey);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    font-size: 125%;
+    background-color: var(--blue);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+}
+
+/* Put search-container so search and search history appear together */
+#search-container {
+    display: flex;
+    flex-direction: column;
+    width: 25%; 
+    margin-right: 20px;
+}
+
+#search-section {
+    border-radius: 15px;
+    background-color: var(--offwhite);
+    border: 1px solid var(--darkoffwhite);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#search-form input,
+#search-form button {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#search-form button {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#search-form button:hover {
+    background-color: var(--darkblue);
+}
+
+#search-history-section {
+    background-color: white;
+    border: 2px solid var(--darkoffwhite);
+    padding: 10px;
+    flex-grow: 1; 
+}
+
+#search-history-section h3 {
+    text-decoration: underline;
+}
+
+#search-history {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#search-history li {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#weather-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+#weather-container h2 {
+    text-decoration: underline;
+}
+
+#current-weather-section {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+#current-weather-section, #forecast-section {
+    background-color: white;
+    border: 1px solid var(--darkoffwhite);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#forecast {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* planning ahead for how the forecast sections will look may need to change*/
+.forecast-day {
+    flex: 1 1 15%; 
+    text-align: center;
+    padding: 10px;
+    background-color: var(--offwhite);
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    #search-container, #weather-container {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .forecast-day {
+        flex: 1 1 80%;
+    }
+}
+
+
+
+
+
