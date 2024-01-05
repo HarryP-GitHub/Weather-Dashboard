@@ -86,6 +86,7 @@ main {
     padding: 10px;
     margin-bottom: 5px;
     cursor: pointer;
+    border: 2px solid var(--darkoffwhite);
 }
 
 #weather-container {
@@ -124,6 +125,11 @@ main {
     background-color: var(--offwhite);
     border: 2px solid black;
     border-radius: 5px;
+}
+
+.forecast-day h4 {
+ color: white;
+ background-color: black;
 }
 
 @media (max-width: 768px) {
