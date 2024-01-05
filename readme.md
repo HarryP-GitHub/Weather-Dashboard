@@ -34,4 +34,4 @@ N/A
 
 ## Deployed Website image
 
-![Deployed Website Image](./assets/images/DeployedApplication.png)
+![Deployed Website Image](./assets/images/newDeployedApplication.png)
