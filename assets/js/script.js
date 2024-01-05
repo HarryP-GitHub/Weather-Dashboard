@@ -95,17 +95,53 @@ function forecastWeather(city, forecastData) {
     }
 }
 
-//Search history
+//Search history and local storage
+// Changed this to function that would get the searchHistory
 function updateSearchHistory(city) {
-    var listHistory = document.createElement('li');
-    listHistory.textContent = city;
-    listHistory.addEventListener('click', function() {
-        cityCoordinates(city);
-    });
-    searchHistoryEl.appendChild(listHistory);
+  var listHistory = JSON.parse(localStorage.getItem('listHistory'));
+    if (!listHistory) {
+      listHistory = [];
+    }    
+    
+//Added in loop for duplicates because Search History would stack up 
+    var i = 0;
+    var duplicate = false;
+    while (i < listHistory.length && !duplicate) {
+      if (listHistory[i] === city) {
+        duplicate = true;
+      }
+      i++;
+    } 
+
+    if (!duplicate) { 
+        listHistory.push(city);
+        localStorage.setItem('listHistory', JSON.stringify(listHistory));
+    }
+    displaySearchHistory();
+} 
+
+// Kept getting errors, or duplicating the history when new city was searched, probably a much easier way to do all this
+// I believe because of how I coded JS from before, I found it hard to implement because I had to change previous functions
+function searchHistory() {
+var listHistory = JSON.parse(localStorage.getItem('listHistory'));
+// loop to create search history list
+if (listHistory) {
+    for (var i = 0; i < listHistory.length; i++) {
+        var listHistoryItem = document.createElement('li');
+        listHistoryItem.textContent = listHistory[i];
+        listHistoryItem.addEventListener('click', function() {
+// changed city to this.textContent because it wouldn't load
+            cityCoordinates(this.textContent);
+        });
+        searchHistoryEl.appendChild(listHistoryItem);
+    }
+  }
 }
 
-//local storage
+function displaySearchHistory() {
+    searchHistoryEl.innerHTML = "";
+    searchHistory();
+}
 
+document.addEventListener('DOMContentLoaded', searchHistory);
 searchEl.addEventListener('submit', searchSubmit);
-
